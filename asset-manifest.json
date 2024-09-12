@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/zonafresnel/static/css/main.17ff2a2c.css",
+    "main.js": "/zonafresnel/static/js/main.3620d99c.js",
+    "static/js/453.ed8f00b6.chunk.js": "/zonafresnel/static/js/453.ed8f00b6.chunk.js",
+    "static/media/zonafresnel.png": "/zonafresnel/static/media/zonafresnel.3407cd4d283629191d8b.png",
+    "index.html": "/zonafresnel/index.html",
+    "main.17ff2a2c.css.map": "/zonafresnel/static/css/main.17ff2a2c.css.map",
+    "main.3620d99c.js.map": "/zonafresnel/static/js/main.3620d99c.js.map",
+    "453.ed8f00b6.chunk.js.map": "/zonafresnel/static/js/453.ed8f00b6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17ff2a2c.css",
+    "static/js/main.3620d99c.js"
+  ]
+}
