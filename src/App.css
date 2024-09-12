@@ -1,5 +1,30 @@
-.App {
-  text-align: center;
+
+@media only screen and (min-width: 768px) {
+
+  .App {
+    text-align: center;
+    background-image: url(./images/zonafresnel.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: bottom;
+  
+    
+    height: 100vh;
+  }
+  
+
+}
+@media only screen and (max-width: 768px) {
+  .App {
+    text-align: center;
+    background-image: url(./images/zonafresnel.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: max-content;
+  }
+  
 }
 
 .App-logo {
@@ -24,6 +49,7 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +62,5 @@
     transform: rotate(360deg);
   }
 }
+
+
