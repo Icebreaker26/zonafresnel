@@ -7,6 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { GrSatellite } from "react-icons/gr";
 
 
 
@@ -20,14 +21,59 @@ function App() {
   const [x,setX] = useState();
   const [y,setY] = useState();
   const [n,setN] = useState();
-  const [radio, setRadio] = useState(0);
+  const[radio, setRadio] = useState(0);
+  const [unidadFrecuencia, setUnidadFrecuencia] = useState('Hz');
+  const [unidadLongitud, setUnidadLongitud] = useState('M');
 
-  const zonaFresnel = (frecuencia,x,y,n) => {
+  const zonaFresnel = (frecuencia,x,y,n,unidadFrecuencia,unidadLongitud) => {
 
     x = Number(x);
     y = Number(y);
     frecuencia = Number(frecuencia);
     n = Number(n);
+  
+      switch(unidadFrecuencia){
+
+        case 'GHz':
+        frecuencia *=1000000000;
+        console.log("ESTÁ EN GHz");
+        break;
+
+        case 'MHz':
+        frecuencia *=1000000;
+        console.log("ESTÁ EN MHZ");
+        break;
+
+        case 'KHz':
+        frecuencia *=1000;
+        console.log("ESTÁ EN KHZ");
+        break;
+          
+        default:
+          console.log("ESTÁ EN Hz");
+
+
+      }
+
+      switch(unidadLongitud){
+
+        case 'KM':
+        x *= 1000;
+        y *= 1000;
+        console.log("ESTÁ EN KM");
+        break;
+
+        case 'MILLAS':
+        x*= 1609;
+        y*= 1609;
+        console.log("ESTÁ EN MILLAS");
+        break;
+
+        default:
+        console.log("ESTÁ EN METROS");
+
+
+      }
     
 
     const velocidadLuz = 300000000;
@@ -63,7 +109,7 @@ function App() {
 
 // const mostrar = () => console.log(`Los valores son: x:${x},y:${y},frecuencia:${frecuencia},n:${n}`);
     const ejecutar = () =>{
-      setRadio(zonaFresnel(frecuencia,x,y,n));
+      setRadio(zonaFresnel(frecuencia,x,y,n,unidadFrecuencia,unidadLongitud));
     }
 
   return (
@@ -75,7 +121,7 @@ function App() {
     {/*<InputGroup>*/}
       <Form.Control className='bg bg-danger text-light'
         name='frecuencia'
-        placeholder={"Frecuencia en Hz"}
+        placeholder={"Frecuencia"}
         value={frecuencia}
         onChange={e =>{ 
           setFrecuencia(e.target.value)
@@ -83,10 +129,24 @@ function App() {
         }} 
         onKeyUp={ejecutar}
       />
+
+      <Form.Select aria-label="Default select example"
+                  className='bg bg-secondary' 
+
+       onChange={e => {
+        setUnidadFrecuencia(e.target.value)
+        ejecutar()
+        onclick={ejecutar}
+      }}>
+      <option value="Hz">Hz</option>
+      <option value="MHz">MHz</option>
+      <option value="GHz">GHz</option>
+      </Form.Select>
+
       <Form.Control
         className='bg bg-warning' 
         name='distanciaX'
-        placeholder={"Distancia x Metros"}
+        placeholder={"Distancia x"}
         value={x}
         onChange={e => {
           setX(e.target.value)
@@ -98,7 +158,7 @@ function App() {
       <Form.Control
         className='bg bg-warning' 
         name='distanciaY'
-        placeholder={"Distancia y Metros"}
+        placeholder={"Distancia y"}
         value={y}
         onChange={e =>{
           setY(e.target.value)
@@ -106,6 +166,21 @@ function App() {
         }}
         onKeyUp={ejecutar}
       />
+        <Form.Select 
+            aria-label="Default select example"
+            className='bg bg-secondary' 
+
+            
+       onChange={e => {
+        setUnidadLongitud(e.target.value)
+        ejecutar()
+        onclick={ejecutar}
+      }}>
+      <option value="M">M</option>
+      <option value="KM">KM</option>
+      <option value="MILLAS">MILLAS</option>
+      </Form.Select>
+
       <Form.Control 
         className='bg bg-info' 
         name='zona'
@@ -138,6 +213,10 @@ function App() {
       </a>
       <a href="https://www.instagram.com/alejoelavion/" target='_blank'>
         <FaInstagram className='redes'/>
+      </a>
+      <a href="https://icebreaker26.github.io/TheLinkinTool/" target='_blank'>
+        <GrSatellite className='redes'/>
+
       </a>
 
 
